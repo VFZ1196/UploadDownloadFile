@@ -1,6 +1,8 @@
 package com.UploadDownload.service;
 
 import java.io.IOException;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -22,6 +24,10 @@ public class DatabaseFileService {
 		DatabaseFile dbFile = new DatabaseFile(fileName, file.getContentType(), file.getBytes());
 
 		return databaseFileRepo.save(dbFile);
+	}
+	
+	public Optional<DatabaseFile> getFile(Integer fileId) {
+		return databaseFileRepo.findById(fileId);
 	}
 
 }
